@@ -52,10 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'regex:/^[a-zA-Z ]+$/', 'max:255'],
-            'surname' => ['required', 'string', 'regex:/^[a-zA-Z ]+$/', 'max:255'],
+            'name' => ['required', 'string', 'regex:/^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/', 'max:255'],
+            'surname' => ['required', 'string', 'regex:/^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/', 'max:255'],
             'pesel' => ['required', 'digits:11'],
-            'city' => ['required', 'string', 'regex:/^[a-zA-Z ]+$/', 'max:255'],
+            'city' => ['required', 'string', 'regex:/^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'phone:PL'],
             'postalCode' => ['required', 'postal_code:PL'],
@@ -79,14 +79,15 @@ class RegisterController extends Controller
             'address.max' => 'To pole może zawierać maksymalnie 255 znaków',
             'phone.required' => 'To pole jest wymagane',
             'phone.phone' => 'To pole musi zawierać 9 znaków',
-            'phon.max' => 'To pole może zawierać maksymalnie 255 znaków',
+            'phone.max' => 'To pole może zawierać maksymalnie 255 znaków',
             'postalCode.required' => 'To pole jest wymagane',
             'postalCode.postal_code' => 'Wpisz poprawny format kodu pocztowego (12-345)',
             'email.required' => 'To pole jest wymagane',
             'email.email' => 'Pole email musi być adresem poczty elektronicznej (jankowalski@example.pl)',
             'password.required' => 'To pole jest wymagane',
             'password.regex' => 'Hasło musi zawierać conajmniej jedną cyfrę oraz conajmniej jeden znak specjalny',
-            'rule.required' => 'Aby się zarejestrować musisz zaakceptować regulamin'
+            'password.confirmed' => 'Hasłą muszą być takie same',
+            'rule.required' => 'Aby się zarejestrować musisz zaakceptować regulamin',
         ]
     );
     }
