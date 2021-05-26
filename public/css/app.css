@@ -1082,8 +1082,8 @@ pre code {
   }
 
   .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 80%;
+    max-width: 80%;
   }
 
   .col-md-7 {
@@ -1092,8 +1092,8 @@ pre code {
   }
 
   .col-md-8 {
-    flex: 0 0 66.6666666667%;
-    max-width: 66.6666666667%;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
   .col-md-9 {
@@ -2438,13 +2438,15 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: #004883;
+  border-color: #004883;
+  border-radius: 4px 0px 4px 0px;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: #0058a0;
+  border-color: #0058a0;
+  border-radius: 4px 0px 4px 0px;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
@@ -2883,10 +2885,10 @@ fieldset:disabled a.btn {
 }
 .btn-link:hover {
   color: #1d68a7;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .btn-link:focus, .btn-link.focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .btn-link:disabled, .btn-link.disabled {
   color: #6c757d;
@@ -6630,9 +6632,9 @@ button.bg-dark:focus {
   justify-content: flex-end !important;
 }
 
-.justify-content-center {
+/* .justify-content-center {
   justify-content: center !important;
-}
+} */
 
 .justify-content-between {
   justify-content: space-between !important;
@@ -10017,11 +10019,33 @@ h3 {
     text-shadow: 1px #000000;
 }
 
+@media only screen and (max-width: 600px) {
+  .registerButton {
+    background: rgb(211, 20, 20);
+    color: #ffffff;
+    text-align: center;
+    border-radius: 0px 10px 0px 10px;
+    font-weight: bold;
+    text-shadow: 1px #000000;
+    transition: 0.3s;
+  }
+}
+
 .loginButton {
     color: #000000;
     font-weight: bold;
     text-shadow: 1px #000000;
     transition: 0.3s;
+}
+
+@media only screen and (max-width: 600px) {
+  .loginButton {
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 1px #000000;
+    transition: 0.3s;
+    text-align: center;
+  }
 }
 
 .profileButton {
@@ -10067,4 +10091,167 @@ h3 {
 .coinBox h2 {font-size: 12px; margin-bottom: 3px; border-radius: 5px; display: block; background-color: rgba(255, 255, 255, 0.8);}
 .coinBox h2 a {padding: 0 !important; font-size: 12px; display: inline;}
 
+.left{
+	flex: 1;
+  flex-wrap: wrap;
+}
+.right{
+	flex: 1;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+}
 
+.flexBox{
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .flexBox{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.rule {
+  background-color: rgb(241, 241, 241);
+  padding: 30px;
+  width: 90%;
+  height: 80%;
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px) {
+  .rule {
+    background-color: rgb(241, 241, 241);
+    width: 100%;
+    height: 80%;
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+}
+
+.rule h5 {
+  padding-left: 15px;
+}
+
+.leftLogin{
+	flex: 1;
+  flex-wrap: wrap;
+}
+.rightLogin{
+	flex: 1;
+  flex-wrap: wrap;
+}
+
+.leftInformation{
+	flex: 1;
+  flex-wrap: wrap;
+  color: #ac0404;
+  padding: 10px;
+}
+.centerInformation{
+	flex: 1;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.rightInformation{
+	flex: 1;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.btn-history {
+  color: #000000;
+  background-color: #b9b9b9;
+  border-color: #000000;
+  border-radius: 4px 0px 4px 0px;
+}
+.btn-history:hover {
+  color: #000000;
+  background-color: #797979;
+  border-color: #000000;
+  border-radius: 4px 0px 4px 0px;
+}
+.btn-history:focus, .btn-history.focus {
+  color: #000000;
+  background-color: #b9b9b9;
+  border-color: #000000;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}
+.btn-history.disabled, .btn-history:disabled {
+  color: #000000;
+  background-color: #b9b9b9;
+  border-color: #000000;
+}
+.btn-history:not(:disabled):not(.disabled):active, .btn-history:not(:disabled):not(.disabled).active, .show > .btn-history.dropdown-toggle {
+  color: #000000;
+  background-color: #b9b9b9;
+  border-color: #000000;
+}
+.btn-history:not(:disabled):not(.disabled):active:focus, .btn-history:not(:disabled):not(.disabled).active:focus, .show > .btn-history.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+}
+
+.cardHistory {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: 30px;
+  margin-right: 30px;
+  word-wrap: break-word;
+  background-color: #fff;
+}
+.cardHistory > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+.cardHistory > .list-group {
+  border-top: inherit;
+  border-bottom: inherit;
+}
+.cardHistory > .list-group:first-child {
+  border-top-width: 0;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+.cardHistory > .list-group:last-child {
+  border-bottom-width: 0;
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+.cardHistory > .cardHistory-header + .list-group,
+.cardHistory > .list-group + .cardHistory-footer {
+  border-top: 0;
+}
+
+.welcomeInfo{
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  .welcomeInfo{
+    padding: 0px;
+  }
+}
+
+
+.welcomeTopText{
+  float: right;
+  padding-top: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+  .welcomeTopText{
+    padding: 30px;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .welcomeImg{
+    max-width: 100%;
+  }
+}

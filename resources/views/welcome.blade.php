@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Ether Bank</title>
-
+    <link rel="shortcut icon" href="img/icon.png">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -23,8 +23,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><img style="max-width: 15px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ethereum_logo.svg/1200px-Ethereum_logo.svg.png">
+                <a class="navbar-brand" href="{{ url('/') }}"><img style="max-width: 15px;" src="img/logo.png">
                     <strong>Ether Bank</strong>
+                </a>
+                <a class="navbar-brand" href="{{ url('/rates') }}">
+                    <strong>»KURSY WALUT«</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -58,6 +61,12 @@
                                 </a>
         
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        {{ __('Profil główny') }}
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        {{ __('Ustawienia') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -74,65 +83,18 @@
                 </div>
             </div>
         </nav>
-        <div class="coinBox">
-            <ul>
-                <li class="coin1">
-                    <a style="background-image: url(img/dollar.png); background-color: rgb(255, 255, 255);" title="USD" >
-                        <span>USD</span>
-                        <span id="price1" class="muntbox" style="">Zmienna</span>
-                    </a>
-                </li>
-                <li class="coin1">
-                    <a style="background-image: url(img/euro.png); background-color: rgb(255, 255, 255);" title="EUR" >
-                        <span>EUR</span>
-                        <span id="price1" class="muntbox" style="">Zmienna</span>
-                    </a>
-                </li>
-                <li class="coin1">
-                    <a style="background-image: url(img/GBP.png); background-color: rgb(255, 255, 255);" title="GBP" >
-                        <span>GBP</span>
-                        <span id="price1" class="muntbox" style="">Zmienna</span>
-                    </a>
-                </li>
-                <li class="coin1">
-                    <a style="background-image: url(img/CHF.png); background-color: rgb(255, 255, 255);" title="CHF" >
-                        <span>CHF</span>
-                        <span id="price1" class="muntbox" style="">Zmienna</span>
-                    </a>
-                </li>
-
-            </ul>
-            <ul class="small homesmall">
-                <li class="coin5">
-                    <a style="background-image: url(img/JPY.png); background-color: rgb(255, 255, 255);" title="JPY" >
-                        <span>JPY</span>
-                        <span >ZMIENNA</span>
-                    </a>
-                </li><li class="coin5">
-                    <a style="background-image: url(img/AUD.png); background-color: rgb(255, 255, 255);" title="AUD">
-                        <span>AUD</span>
-                        <span>ZMIENNA</span>
-                    </a>
-                </li>
-                <li class="coin5">
-                    <a style="background-image: url(img/CAD.png); background-color: rgb(255, 255, 255);" title="CAD">
-                        <span>CAD</span>
-                        <span>ZMIENNA</span>
-                    </a>
-                </li>
-                <li class="coin5">
-                    <a style="background-image: url(img/KR.png); background-color: rgb(255, 255, 255);" title="SEK">
-                        <span>SEK</span>
-                        <span>ZMIENNA</span>
-                    </a>
-                </li>
-                <li class="coin5">
-                    <a style="background-image: url(img/NZD.png); background-color: rgb(254, 254, 254);" title="NZD">
-                        <span>NZD</span>
-                        <span>ZMIENNA</span>
-                    </a>
-                </li>					
-            </ul>
+        <div class="welcomeTop">
+            <div class="flexBox">
+                <div class="leftLogin">
+                    <h1><div class="welcomeTopText">Załóż konto za 0zł!</div></h1>
+                </div>
+                <div class="rightLogin">
+                    <img class="welcomeImg" src="img/Ether.png">
+                </div>
+            </div>
+        </div>
+        <div class="welcomeInfo">
+        @include('layouts.info')
         </div>
     </div>
 </body>
