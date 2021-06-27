@@ -92,7 +92,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Wykonaj przelew') }}</div>
+                <div class="card-header">{{ __('Zmień ustawienia konta') }}</div>
                 <div class="flexBox">
                 <div class="left">
                 <div class="card-body">
@@ -106,55 +106,65 @@
                         {{ session('error') }}
                     </div>
                     @endif
-
-                    <form method="GET" action="TransferController">
+                    <form method="GET" action="SettingsController">
                         @csrf
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <h6>Odbiorca</h6>
-                                <input id="name" placeholder="Wpisz nazwę / dane odbiorcy" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  autocomplete="name" autofocus>
-
+                                <h4>Dane osobowe</h4>
+                                <h6>Imię</h6>
+                                <input id="name" placeholder="{{ Auth::user()->name }}" type="text" class="form-control  @error('name') is-invalid @enderror" name="name" autocomplete="name" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <h6>Numer konta</h6>
-                                <input id="receiveracc" placeholder="Wpisz numer konta odbiorcy" type="number" class="form-control @error('receiveracc') is-invalid @enderror" name="receiveracc"  autocomplete="receiveracc" autofocus>
-
-                                @error('receiveracc')
+                                <br><h6>Nazwisko</h6>
+                                <input id="surname" placeholder="{{ Auth::user()->surname }}" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" autocomplete="surname" autofocus>
+                                @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <h6>Tytuł</h6>
-                                <input id="title" placeholder="Podaj tytuł przelewu" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="Przelew środków"  autocomplete="title" autofocus>
-
-                                @error('title')
+                                <br><h6>Pesel</h6>
+                                <input id="pesel" placeholder="{{ Auth::user()->pesel }}" type="text" class="form-control @error('pesel') is-invalid @enderror" name="pesel" autocomplete="pesel" autofocus disabled>
+                                @error('pesel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <h6>Kwota</h6>
-                                <input id="amount" placeholder="0,00" type="double" class="form-control @error('amount') is-invalid @enderror" name="amount"  autocomplete="amount" autofocus>
-                                <p>Maksymalna kwota przelewu: 
-                                @foreach ($data as $item)
-                                    {{$item->balance}}
-                                @endforeach
-                                </p>
-                                @error('amount')
+                                <br><h4>Adres zamieszkania</h4>
+                                <br><h6>Miasto</h6>
+                                <input id="city" placeholder="{{ Auth::user()->city }}" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" autofocus>
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <br><h6>Kod pocztowy</h6>
+                                <input id="postalCode" placeholder="{{ Auth::user()->postalCode }}" type="text" class="form-control @error('postalCode') is-invalid @enderror" name="postalCode" autocomplete="postalCode" autofocus>
+                                @error('postalCode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <br><h6>Ulica</h6>
+                                <input id="address" placeholder="{{ Auth::user()->address }}" type="text" class="form-control @error('address') is-invalid @enderror" name="address" autocomplete="address" autofocus>
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <br><h4>Dane kontaktowe</h4>
+                                <br><h6>Numer telefonu</h6>
+                                <input id="phone" placeholder="{{ Auth::user()->phone }}" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" autocomplete="phone" autofocus>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <br><h6>E-Mail</h6>
+                                <input id="email" placeholder="{{ Auth::user()->email }}" type="text" class="form-control @error('email') is-invalid @enderror" name="email" autocomplete="email" autofocus disabled>
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -164,7 +174,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Wyślij') }}
+                                    {{ __('Zapisz ustawienia') }}
                                 </button>
                             </div>
                         </div>
@@ -172,7 +182,7 @@
                 </div>
             </div>
             <div class="right">
-                @include('layouts.rightboxInfo')
+                
             </div>
         </div>
         </div>

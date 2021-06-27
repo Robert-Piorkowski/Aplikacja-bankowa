@@ -33,7 +33,7 @@
             @else
               <td style="color: rgb(11, 145, 33)">{{ $item->amount }}</td>
             @endif
-            <td>{{ $item->created_at }}</td>
+            <td>{{ $item->transfered_at }}</td>
           </tr>
           @endforeach
         </tbody>

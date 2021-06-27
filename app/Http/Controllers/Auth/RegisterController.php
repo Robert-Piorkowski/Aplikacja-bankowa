@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'surname.required' => 'To pole jest wymagane',
             'surname.max' => 'To pole może zawierać maksymalnie 255 znaków',
             'pesel.required' => 'To pole jest wymagane',
-            'pesel.digits' => 'Pesel może zawierać maksymalnie 11 znaków',
+            'pesel.digits' => 'To pole musi zawierać 11 cyfr',
             'pesel.unique' => 'Konto z takim numerem pesel już istnieje',
             'city.required' => 'To pole jest wymagane',
             'city.regex' => 'To pole nie może zawierać cyfr',

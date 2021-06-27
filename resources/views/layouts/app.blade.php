@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Ether Bank</title>
-    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="shortcut icon" href="/img/icon.png">
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
@@ -23,11 +23,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><img style="max-width: 15px;" src="img/logo.png">
+                <a class="navbar-brand" href="{{ url('/') }}"><img style="max-width: 15px;" src="/img/logo.png">
                     <strong>Ether Bank</strong>
-                </a>
-                <a class="navbar-brand" href="{{ url('/rates') }}">
-                    <strong>»KURSY WALUT«</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,6 +40,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <a class="nav-link ratesButton" href="{{ url('/rates') }}">
+                                <strong>»KURSY WALUT«</strong>
+                            </a>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link loginButton" href="{{ route('login') }}">{{ __('Zaloguj się') }}</a>
@@ -56,6 +56,9 @@
                                 </li>
                             @endif
                         @else
+                            <a class="nav-link ratesButton" href="{{ url('/rates') }}">
+                                <strong>»KURSY WALUT«</strong>
+                            </a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle profileButton" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} {{ Auth::user()->surname }}
@@ -65,7 +68,7 @@
                                     <a class="dropdown-item" href="{{ route('home') }}">
                                         {{ __('Profil główny') }}
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="/settings">
                                         {{ __('Ustawienia') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

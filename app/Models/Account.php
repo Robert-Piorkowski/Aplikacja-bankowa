@@ -12,9 +12,13 @@ class Account extends Model
     protected $fillable = [
         'accountNumber',
         'balance',
+        'accountType',
     ];
 
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+    public function type(){
+        return $this->belongsTo('App\Models\Type');
     }
 }

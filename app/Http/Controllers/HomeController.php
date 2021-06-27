@@ -34,10 +34,15 @@ class HomeController extends Controller
         ->where('senderId', Auth::id())
         ->orWhere('receiverId', Auth::id())->get();
 
-        $data3 = DB::table('transactions')
-        ->join('users', 'receiverId', 'users.id')
-        ->where('receiverId', Auth::id())->get();
+        return view('home', ['data' => $data, 'data2' => $data2]);
+    }
 
-        return view('home', ['data' => $data, 'data2' => $data2, 'data3' => $data3]);
+    public function adminView()
+    {
+        $usersData = DB::table('users')->get();
+
+
+
+        return view('admin-view', ['usersData' => $usersData]);
     }
 }

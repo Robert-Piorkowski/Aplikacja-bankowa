@@ -4339,6 +4339,8 @@ input[type=button].btn-block {
 
 .card {
   position: relative;
+  top: 5%;
+  margin-bottom: 5%;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -10047,6 +10049,24 @@ h3 {
     text-align: center;
   }
 }
+
+.ratesButton {
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 1px #000000;
+  transition: 0.3s;
+}
+
+@media only screen and (max-width: 600px) {
+.ratesButton {
+  color: #000000;
+  font-weight: bold;
+  text-shadow: 1px #000000;
+  transition: 0.3s;
+  text-align: center;
+}
+}
+
 
 .profileButton {
   color: #000000;

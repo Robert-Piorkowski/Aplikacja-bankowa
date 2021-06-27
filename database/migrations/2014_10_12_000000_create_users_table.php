@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->boolean('is_admin')->nullable();
             $table->string('pesel')->unique();
             $table->string('city');
             $table->string('address');
@@ -24,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('accepted')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

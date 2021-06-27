@@ -8,15 +8,19 @@ use Illuminate\Support\Facades\Http;
 class Rates extends Controller
 {
     public function list(){
-        $USD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/USD/today')->json();
-        $EUR = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/EUR/today')->json();
-        $GBP = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/GBP/today')->json();
-        $CHF = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/CHF/today')->json();
-        $JPY = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/JPY/today')->json();
-        $AUD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/AUD/today')->json();
-        $CAD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/CAD/today')->json();
-        $SEK = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/SEK/today')->json();
-        $NZD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/USD/today')->json();
-        return view('rates', ['USD' => $USD, 'EUR' => $EUR, 'GBP' => $GBP, 'CHF' => $CHF, 'JPY' => $JPY, 'AUD' => $AUD, 'CAD' => $CAD, 'SEK' => $SEK, 'NZD' => $NZD]);
+        $USD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/USD')->json();
+        $EUR = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/EUR')->json();
+        $GBP = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/GBP')->json();
+        $CHF = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/CHF')->json();
+        $JPY = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/JPY')->json();
+        $AUD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/AUD')->json();
+        $CAD = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/CAD')->json();
+        $SEK = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/SEK')->json();
+        $NOK = Http::get('http://api.nbp.pl/api/exchangerates/rates/C/NOK')->json();
+        if($USD == null || $EUR == null || $GBP == null || $CHF == null || $JPY == null || $AUD == null || $CAD == null || $SEK == null || $NOK == null ){
+            return redirect('home')->with('error', 'Problem z połączeniem, spróbuj ponownie później!');
+        } else {
+        return view('rates', ['USD' => $USD, 'EUR' => $EUR, 'GBP' => $GBP, 'CHF' => $CHF, 'JPY' => $JPY, 'AUD' => $AUD, 'CAD' => $CAD, 'SEK' => $SEK, 'NOK' => $NOK]);
+        }
     }
 }

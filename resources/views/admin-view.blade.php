@@ -86,74 +86,48 @@
                 </div>
             </div>
         </nav>
-<div class="coinBox">
-    <ul>
-        <li class="coin1">
-            <a style="background-image: url(img/dollar.png); background-color: rgb(255, 255, 255);" title="USD" >
-                <span>USD</span>
-                <span id="price1" class="muntbox" style="">Bid {{ round($USD['rates'][0]['bid'], 2) }}</span>
-                <span id="price1" class="muntbox" style="">Ask {{ round($USD['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin1">
-            <a style="background-image: url(img/euro.png); background-color: rgb(255, 255, 255);" title="EUR" >
-                <span>EUR</span>
-                <span id="price1" class="muntbox" style="">Bid {{ round($EUR['rates'][0]['bid'], 2) }}</span>
-                <span id="price1" class="muntbox" style="">Ask {{ round($EUR['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin1">
-            <a style="background-image: url(img/GBP.png); background-color: rgb(255, 255, 255);" title="GBP" >
-                <span>GBP</span>
-                <span id="price1" class="muntbox" style="">Bid {{ round($GBP['rates'][0]['bid'], 2) }}</span>
-                <span id="price1" class="muntbox" style="">Ask {{ round($GBP['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin1">
-            <a style="background-image: url(img/CHF.png); background-color: rgb(255, 255, 255);" title="CHF" >
-                <span>CHF</span>
-                <span id="price1" class="muntbox" style="">Bid {{ round($CHF['rates'][0]['bid'], 2) }}</span>
-                <span id="price1" class="muntbox" style="">Ask {{ round($CHF['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
+    </div>
 
-    </ul>
-    <ul class="small homesmall">
-        <li class="coin5">
-            <a style="background-image: url(img/JPY.png); background-color: rgb(255, 255, 255);" title="JPY" >
-                <span>JPY</span>
-                <span>Bid {{ round($JPY['rates'][0]['bid'], 2) }}</span>
-                <span>Ask {{ round($JPY['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li><li class="coin5">
-            <a style="background-image: url(img/AUD.png); background-color: rgb(255, 255, 255);" title="AUD">
-                <span>AUD</span>
-                <span>Bid {{ round($AUD['rates'][0]['bid'], 2) }}</span>
-                <span>Ask {{ round($AUD['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin5">
-            <a style="background-image: url(img/CAD.png); background-color: rgb(255, 255, 255);" title="CAD">
-                <span>CAD</span>
-                <span>Bid {{ round($CAD['rates'][0]['bid'], 2) }}</span>
-                <span>Ask {{ round($CAD['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin5">
-            <a style="background-image: url(img/KR.png); background-color: rgb(255, 255, 255);" title="SEK">
-                <span>SEK</span>
-                <span>Bid {{ round($SEK['rates'][0]['bid'], 2) }}</span>
-                <span>Ask {{ round($SEK['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>
-        <li class="coin5">
-            <a style="background-image: url(img/NOK.png); background-color: rgb(255, 255, 255);" title="NOK">
-                <span>NOK</span>
-                <span>Bid {{ round($NOK['rates'][0]['bid'], 2) }}</span>
-                <span>Ask {{ round($NOK['rates'][0]['ask'], 2) }}</span>
-            </a>
-        </li>					
-    </ul>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Panel Administracyjny - zweryfikuj oraz zaakceptuj użytkowników!</div>
+
+                <div class="card-body">
+                    
+                  @foreach ($usersData as $userData)
+                  
+                  @if ($userData->accepted == NULL)
+                  <div class="card" style="padding: 10px;">
+                    <h4>Dane osobowe</h4><br>
+                      <strong>Imię i nazwisko:</strong> {{ $userData->name }}
+                      {{ $userData->surname }}<br>
+                      <strong>Pesel:</strong> {{ $userData->pesel }}<br><br>
+                      <h4>Adres zamieszkania</h4><br>
+                      <strong>Miasto:</strong> {{ $userData->city }}<br>
+                      <strong>Kod pocztowy:</strong> {{ $userData->postalCode }}<br>
+                      <strong>Ulica:</strong> {{ $userData->address }}<br><br>
+                      <h4>Dane kontaktowe</h4><br>
+                      <strong>E-Mail:</strong> {{ $userData->email }}<br>
+                      <strong>Numer telefonu:</strong> {{ $userData->phone }}<br><br>
+                      @if ($userData->email_verified_at == NULL)
+                      <strong>Status E-Mail: </strong><strong style="color: #ff0000">NIEZWERYFIKOWANY</strong>
+                      @else
+                      <strong>Status E-Mail: </strong><strong style="color: #2b9900">ZWERYFIKOWANY</strong>
+                      @endif
+                      <form method="GET" action="AcceptUserController">
+                        {{ @csrf_field() }}
+                        <br><input name="id" type="text" value="{{ $userData->id }}" hidden>
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Zaakceptuj') }}
+                        </button>
+                      </form>
+                    </div>
+                      @endif
+                  @endforeach
+            </div>
+        </div>
+    </div>
 </div>
 </body>
-</html>
