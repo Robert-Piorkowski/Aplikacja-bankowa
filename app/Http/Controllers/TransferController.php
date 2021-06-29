@@ -15,7 +15,7 @@ class TransferController extends Controller
             'name' => ['required', 'max:255'],
             'receiveracc' => ['required', 'digits:26', 'max:255'],
             'title' => ['required', 'max:255'],
-            'amount' => ['required', 'regex:/^[0-9]+$/', 'max:255'],
+            'amount' => ['required', 'regex:/^[0-9]+(\.[0-9]{1,2})?$/', 'max:255'],
         ],
         [
             'name.required' => 'To pole jest wymagane',
@@ -55,13 +55,6 @@ class TransferController extends Controller
         }
         
         if($number->balance >= $amount && $number->balance >= 0){
-        DB::table('accounts')
-        ->where('user_id', Auth::id())
-        ->update(['balance' => DB::raw('balance-'.$amount)]);
-
-        DB::table('accounts')
-        ->where('accountNumber', $receiveracc)
-        ->update(['balance' => DB::raw('balance+'.$amount)]);
 
         DB::table('transactions')->insert([
                 'receiverId' => $userid->user_id,
@@ -73,6 +66,15 @@ class TransferController extends Controller
                 'title' => $title,
                 'amount' => $amount,
              ]);
+
+        DB::table('accounts')
+        ->where('user_id', Auth::id())
+        ->update(['balance' => DB::raw('balance-'.$amount)]);
+     
+        DB::table('accounts')
+        ->where('accountNumber', $receiveracc)
+        ->update(['balance' => DB::raw('balance+'.$amount)]);
+     
         return redirect('transfer')->with('success', 'Przelew został wykonany pomyślnie!');
         } else {
             return redirect('transfer')->with('error', 'Przelew nie został wykonany!');
